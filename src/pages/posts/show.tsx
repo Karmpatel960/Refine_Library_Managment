@@ -1,6 +1,6 @@
 import { useShow, IResourceComponentsProps, useOne } from "@pankod/refine-core";
 
-import { Show, Typography, MarkdownField } from "@pankod/refine-antd";
+import { Show, Typography, MarkdownField ,ImageField} from "@pankod/refine-antd";
 
 import { IPost, ICategory } from "interfaces";
 
@@ -24,6 +24,14 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
         <Show isLoading={isLoading}>
             <Title level={5}>Id</Title>
             <Text>{record?.id}</Text>
+
+            <Title level={5}>Image</Title>
+                        <ImageField
+                            value={record?.image[0].url}
+                            title={record?.image[0].name}
+                            width={100}
+                            height={100}
+                        />
 
             <Title level={5}>Title</Title>
             <Text>{record?.title}</Text>

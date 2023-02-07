@@ -8,6 +8,7 @@ import {
     Space,
     EditButton,
     ShowButton,
+    ImageField,
 } from "@pankod/refine-antd";
 
 import { IPost, ICategory } from "interfaces";
@@ -33,14 +34,27 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                     title="ID"
                     render={(value) => <TextField value={value} />}
                 />
-                <Table.Column
-                    dataIndex="title"
-                    title="Title"
-                    render={(value) => <TextField value={value} />}
+                <Table.Column<IPost>
+                    title="Book Image"
+                    dataIndex="image"
+                    render={(_, record) => (
+                        <ImageField
+                            value={record.image[0].url}
+                            title={record.image[0].name}
+                            width={100}
+                        />
+                    )}
+                    width="20%"
                 />
                 <Table.Column
+                    dataIndex="title"
+                    title="Book Title"
+                    render={(value) => <TextField value={value} />}
+                />
+
+                <Table.Column
                     dataIndex={["category", "id"]}
-                    title="Category"
+                    title="Book Category"
                     render={(value) => {
                         if (isLoading) {
                             return <TextField value="Loading..." />;

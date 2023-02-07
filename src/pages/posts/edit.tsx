@@ -83,7 +83,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    <MDEditor data-color-mode="light" />
+                    <MDEditor data-color-mode="dark" />
                 </Form.Item>
             </Form>
         </Edit>

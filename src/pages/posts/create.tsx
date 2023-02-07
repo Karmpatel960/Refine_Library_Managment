@@ -81,7 +81,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    <MDEditor data-color-mode="light" />
+                    <MDEditor data-color-mode="dark" />
                 </Form.Item>
             </Form>
         </Create>

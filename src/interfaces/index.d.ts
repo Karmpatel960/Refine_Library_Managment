@@ -9,5 +9,11 @@ export interface IPost {
     content: string;
     status: "published" | "draft" | "rejected";
     category:{id:number};
+    image: [
+        {
+            url: string;
+            name: string;
+        },
+    ];
     
 }
