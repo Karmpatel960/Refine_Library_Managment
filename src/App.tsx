@@ -11,7 +11,7 @@ import axios from "axios";
 
 import "@pankod/refine-antd/dist/reset.css";
 
-import { PostList, PostCreate, PostEdit, PostShow} from "pages";
+import { PostList, PostCreate, PostEdit, PostShow} from "pages/posts";
 import { Login } from "pages/Login";
 
 const API_URL = "https://api.fake-rest.refine.dev";
@@ -67,7 +67,7 @@ const App: React.FC = () => {
             routerProvider={routerProvider}
             resources={[
                 {
-                    name: "Books",
+                    name: "posts",
                     list: PostList,
                     create: PostCreate,
                     edit: PostEdit,
