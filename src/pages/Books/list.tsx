@@ -12,7 +12,6 @@ import {
 } from "@pankod/refine-antd";
 
 import { IPost, ICategory } from "interfaces";
-
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps } = useTable<IPost>();
 
@@ -29,6 +28,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
     return (
         <List>
             <Table {...tableProps} rowKey="id">
+
                 <Table.Column
                     dataIndex="id"
                     title="ID"

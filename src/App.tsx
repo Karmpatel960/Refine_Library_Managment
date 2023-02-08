@@ -6,13 +6,12 @@ import {
 } from "@pankod/refine-antd";
 import dataProvider from "@pankod/refine-simple-rest";
 import routerProvider from "@pankod/refine-react-router-v6";
-
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
 import "@pankod/refine-antd/dist/reset.css";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import { PostList, PostCreate, PostEdit, PostShow} from "pages";
 import { Login } from "pages/Login";
 
 const API_URL = "https://api.fake-rest.refine.dev";
@@ -68,7 +67,7 @@ const App: React.FC = () => {
             routerProvider={routerProvider}
             resources={[
                 {
-                    name: "posts",
+                    name: "Books",
                     list: PostList,
                     create: PostCreate,
                     edit: PostEdit,
