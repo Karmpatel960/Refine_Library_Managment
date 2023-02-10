@@ -8,6 +8,7 @@ import {
     Select,
     useForm,
     useSelect,
+    FileField,
 } from "@pankod/refine-antd";
 
 import MDEditor from "@uiw/react-md-editor";
@@ -24,7 +25,14 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     });
 
     return (
-        <Edit saveButtonProps={saveButtonProps}>
+        <Edit saveButtonProps={saveButtonProps}
+        wrapperProps={{
+            style: {
+                backgroundColor: "cornflowerblue",
+                padding: "16px",
+            },
+        }}
+        >
             <Form {...formProps} layout="vertical">
                 <Form.Item
                     label="Title"
@@ -46,6 +54,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
+                    
                     <Select {...categorySelectProps} />
                 </Form.Item>
                 <Form.Item

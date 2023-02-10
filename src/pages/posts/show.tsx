@@ -21,7 +21,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
         });
 
     return (
-        <Show isLoading={isLoading}>
+        <Show isLoading={isLoading} title="Book">
             <Title level={5}>Id</Title>
             <Text>{record?.id}</Text>
 

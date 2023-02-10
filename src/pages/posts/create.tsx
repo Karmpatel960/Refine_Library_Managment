@@ -1,29 +1,65 @@
 import React from "react";
-import { IResourceComponentsProps } from "@pankod/refine-core";
+import { IResourceComponentsProps, file2Base64,
+    HttpError, } from "@pankod/refine-core";
 
 import {
     Create,
     Form,
     Input,
     Select,
+    Upload,
     useForm,
     useSelect,
+    getValueFromEvent,
 } from "@pankod/refine-antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ICategory } from "interfaces";
+import { IPost, ICategory, IUser, IUserVariable } from "interfaces";
 
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
-    const { formProps, saveButtonProps } = useForm<IPost>();
+    const { formProps, saveButtonProps } = useForm<
+    IPost
+  
+    >();
 
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
         resource: "categories",
     });
 
     return (
-        <Create saveButtonProps={saveButtonProps}>
-            <Form {...formProps} layout="vertical">
+        <Create saveButtonProps={saveButtonProps} title="Add Book"         wrapperProps={{
+            style: {
+                backgroundColor: "cornflowerblue",
+                padding: "16px",
+            },
+        }}>
+            <Form {...formProps} layout="vertical"  
+             onFinish={async (values) => {
+                 const base64Files = [];
+                //  const { avatar} = values;
+
+                 for (const file of avatar) {
+                     if (file.originFileObj) {
+                         const base64String = await file2Base64(file);
+
+                         base64Files.push({
+                             ...file,
+                             base64String,
+                         });
+                     } else {
+                         base64Files.push(file);
+                     }
+                 }
+
+                 return (
+                     formProps.onFinish &&
+                     formProps.onFinish({
+                         ...values,
+                         avatar: base64Files,
+                     })
+                 );
+             }}>
                 <Form.Item
                     label="Title"
                     name="title"
@@ -45,6 +81,30 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                     <Select {...categorySelectProps} />
+                </Form.Item>
+
+                <Form.Item label="Book Cover Page ">
+                    <Form.Item
+                        name="Book Cover Page"
+                        valuePropName="fileList"
+                        getValueFromEvent={getValueFromEvent}
+                        noStyle
+                        rules={[
+                            {
+                                required: true,
+                            },
+                        ]}
+                    >
+                        <Upload.Dragger
+                            listType="picture"
+                            multiple
+                            beforeUpload={() => false}
+                        >
+                            <p className="ant-upload-text">
+                                Drag & drop a file in this area
+                            </p>
+                        </Upload.Dragger>
+                    </Form.Item>
                 </Form.Item>
                 <Form.Item
                     label="Status"

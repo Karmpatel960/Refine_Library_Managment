@@ -6,16 +6,17 @@ export const Login: React.FC = () => {
 
     return (
         <AntdLayout
-            style={{
-                background: `radial-gradient(50% 50% at 50% 50%, #63386A 0%, #310438 100%)`,
-                backgroundSize: "cover",
-            }}
+            // style={{
+            //     background: `radial-gradient(50% 50% at 50% 50%, #63386A 0%, #310438 100%)`,
+            //     backgroundSize: "cover",
+            // }}
         >
+               <div style={{ marginBottom: "28px" }}>
+                        <img src="./Signin.png" alt="Refine" />
+                    </div>
             <div style={{ height: "100vh", display: "flex" }}>
                 <div style={{ maxWidth: "200px", margin: "auto" }}>
-                    <div style={{ marginBottom: "28px" }}>
-                        <img src="./favicon.ico" alt="Refine" />
-                    </div>
+                 
                     <Button
                         type="primary"
                         size="large"
