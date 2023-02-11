@@ -16,6 +16,7 @@ import { Login } from "pages/Login";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 
+
 const App: React.FC = () => {
     const { isLoading, user, logout, getIdTokenClaims } = useAuth0();
 
@@ -75,7 +76,8 @@ const App: React.FC = () => {
                 },
             ]}
             notificationProvider={notificationProvider}
-            Layout={Layout}
+            Layout={Layout }
+            
             catchAll={<ErrorComponent />}
         />
     );
