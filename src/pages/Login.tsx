@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
                     </div>
             <div style={{ height: "100vh", display: "flex" }}>
                 <div style={{ maxWidth: "200px", margin: "auto" }}>
-                <link href="./MainPage.html"/>
+            
                     <Button
                         type="primary"
                         size="large"

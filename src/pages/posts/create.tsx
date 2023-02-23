@@ -14,7 +14,7 @@ import {
 } from "@pankod/refine-antd";
 
 import MDEditor from "@uiw/react-md-editor";
-import { IPost, ICategory, file2Base64 } from "interfaces";
+import { IPost, ICategory} from "interfaces";
 
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm<
@@ -64,8 +64,8 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     );
   }}
 >
-  {/* Form fields */}
-</Form>
+
+
 
 
                 <Form.Item
@@ -153,6 +153,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                     <MDEditor data-color-mode="dark" />
                 </Form.Item>
             </Form>
+            
         </Create>
     );
 };
