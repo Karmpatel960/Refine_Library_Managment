@@ -14,8 +14,7 @@ import {
 } from "@pankod/refine-antd";
 
 import MDEditor from "@uiw/react-md-editor";
-
-import { IPost, ICategory, IUser, IUserVariable } from "interfaces";
+import { IPost, ICategory, file2Base64 } from "interfaces";
 
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm<
@@ -34,32 +33,41 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                 padding: "16px",
             },
         }}>
-            <Form {...formProps} layout="vertical"  
-             onFinish={async (values) => {
-                 const base64Files = [];
-                //  const { avatar} = values;
+<Form
+  {...formProps}
+  layout="vertical"
+  onFinish={async (values) => {
+    // Convert avatar files to base64 strings
+    const base64Files = [];
+    const { avatar } = values;
 
-                 for (const file of avatar) {
-                     if (file.originFileObj) {
-                         const base64String = await file2Base64(file);
+    for (const file of avatar) {
+      if (file.originFileObj) {
+        const base64String = await file2Base64(file);
 
-                         base64Files.push({
-                             ...file,
-                             base64String,
-                         });
-                     } else {
-                         base64Files.push(file);
-                     }
-                 }
+        base64Files.push({
+          ...file,
+          base64String,
+        });
+      } else {
+        base64Files.push(file);
+      }
+    }
 
-                 return (
-                     formProps.onFinish &&
-                     formProps.onFinish({
-                         ...values,
-                         avatar: base64Files,
-                     })
-                 );
-             }}>
+    // Call formProps.onFinish with updated values
+    return (
+      formProps.onFinish &&
+      formProps.onFinish({
+        ...values,
+        avatar: base64Files,
+      })
+    );
+  }}
+>
+  {/* Form fields */}
+</Form>
+
+
                 <Form.Item
                     label="Title"
                     name="title"
@@ -84,28 +92,29 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                 </Form.Item>
 
                 <Form.Item label="Book Cover Page ">
-                    <Form.Item
-                        name="Book Cover Page"
-                        valuePropName="fileList"
-                        getValueFromEvent={getValueFromEvent}
-                        noStyle
-                        rules={[
-                            {
-                                required: true,
-                            },
-                        ]}
-                    >
-                        <Upload.Dragger
-                            listType="picture"
-                            multiple
-                            beforeUpload={() => false}
-                        >
-                            <p className="ant-upload-text">
-                                Drag & drop a file in this area
-                            </p>
-                        </Upload.Dragger>
-                    </Form.Item>
-                </Form.Item>
+    <Form.Item
+        name="avatar"
+        valuePropName="fileList"
+        getValueFromEvent={getValueFromEvent}
+        noStyle
+        rules={[
+            {
+                required: true,
+            },
+        ]}
+    >
+        <Upload.Dragger
+            name="avatar"
+            listType="picture"
+            multiple
+            beforeUpload={() => false}
+        >
+            <p className="ant-upload-text">
+                Drag & drop a file in this area
+            </p>
+        </Upload.Dragger>
+    </Form.Item>
+</Form.Item>
                 <Form.Item
                     label="Status"
                     name="status"

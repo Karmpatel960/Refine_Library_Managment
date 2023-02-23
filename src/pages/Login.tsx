@@ -11,12 +11,13 @@ export const Login: React.FC = () => {
             //     backgroundSize: "cover",
             // }}
         >
+            
                <div style={{ marginBottom: "28px" }}>
                         <img src="./Signin.png" alt="Refine" />
                     </div>
             <div style={{ height: "100vh", display: "flex" }}>
                 <div style={{ maxWidth: "200px", margin: "auto" }}>
-                 
+                <link href="./MainPage.html"/>
                     <Button
                         type="primary"
                         size="large"
@@ -30,3 +31,4 @@ export const Login: React.FC = () => {
         </AntdLayout>
     );
 };
+

@@ -11,6 +11,7 @@ const root = createRoot(container);
 
 root.render(
     <React.StrictMode>
+
         <Auth0Provider
             domain="refine.eu.auth0.com"
             clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
@@ -18,6 +19,7 @@ root.render(
         >
             <App />
         </Auth0Provider>
+
     </React.StrictMode>,
 );
 
